@@ -18,27 +18,27 @@ MainClassShrPtr mainclass;
 int MainClass::record_line1()
 {
 	line1.encode_mod.reset(new EncodeMod(640, 480,
-											30,
-											"/home/boy/video_cam/face_cam"));
+						30,
+						"/home/boy/video_cam/face_cam"));
 
 	line1.jpeg_to_yuv_.reset(new JpegToYUV(ENCODE_MOD_CALLBACK_FUNC(line1.encode_mod.get())));
 
 	line1.face_cam.reset(new FaceCam("/dev/video0",
-								JPEG_TO_YUV_CALLBACK_FUNC(line1.jpeg_to_yuv_.get()),
-								ENCODE_MOD_CALLBACK_FUNC(line1.encode_mod.get())));
+					JPEG_TO_YUV_CALLBACK_FUNC(line1.jpeg_to_yuv_.get()),
+					ENCODE_MOD_CALLBACK_FUNC(line1.encode_mod.get())));
 
 }
 
 int MainClass::record_line2()
 {
 	line2.encode_mod.reset(new EncodeMod(640, 480,
-											30,
-											"/home/boy/video_cam/dcs_933l"));
+						30,
+						"/home/boy/video_cam/dcs_933l"));
 
 	line2.jpeg_to_yuv_.reset(new JpegToYUV(ENCODE_MOD_CALLBACK_FUNC(line2.encode_mod.get())));
 
 	line2.dcs_933l_.reset(new DlinkCamera("192.168.56.30", 8030,
-						"admin", "229rfvthf",
+						"admin", "admin",
 						JPEG_TO_YUV_CALLBACK_FUNC(line2.jpeg_to_yuv_.get()),
 						ENCODE_MOD_CALLBACK_FUNC(line2.encode_mod.get())));
 }
@@ -46,14 +46,14 @@ int MainClass::record_line2()
 int MainClass::record_line3()
 {
 	line3.encode_mod.reset(new EncodeMod(1280, 960,
-											30,
-											"/home/boy/video_cam/ic_3015"));
+						30,
+						"/home/boy/video_cam/ic_3015"));
 
 	line3.jpeg_to_yuv_.reset(new JpegToYUV(ENCODE_MOD_CALLBACK_FUNC(line3.encode_mod.get())));
 
 	line3.ic_3015_.reset(new EdimaxCamera("192.168.56.31", 80,
-									"admin", "1234",
-									JPEG_TO_YUV_CALLBACK_FUNC(line3.jpeg_to_yuv_.get())));
+						"admin", "admin",
+						JPEG_TO_YUV_CALLBACK_FUNC(line3.jpeg_to_yuv_.get())));
 }
 
 MainClass::~MainClass()
